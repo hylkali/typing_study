@@ -4,3 +4,4 @@ flask_cors
 flask_jwt_extended
 Werkzeug
 gunicorn
+psycopg2-binary
