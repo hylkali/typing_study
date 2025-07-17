@@ -21,6 +21,9 @@ app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY", "dev-secret-key")
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(days=7)
 
 db = SQLAlchemy(app)
+with app.app_context():
+    db.create_all()      # 테이블이 없으면 생성, 있으면 아무 일도 안 함
+
 jwt = JWTManager(app)
 
 # ---------------------------------------------------------------------------
