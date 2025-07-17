@@ -353,10 +353,6 @@ def highscores():
         {"username": row.username, "best_wpm": row.max_wpm}
         for row in q.all()
     ])
-@app.route('/init-db')
-def init_db_route():
-    db.create_all()
-    return "DB initialized!"
 
 # ---------------------------------------------------------------------------
 if __name__ == "__main__":
