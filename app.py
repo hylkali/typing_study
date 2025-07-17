@@ -42,6 +42,7 @@ class User(db.Model):
     is_admin = db.Column(db.Boolean, default=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
+
     def set_password(self, pwd):
         self.hashed_password = generate_password_hash(pwd)
 
@@ -108,7 +109,7 @@ def register():
     if User.query.filter_by(email=email).first():
         return jsonify({"msg": "이미 존재하는 이메일."}), 400
 
-    user = User(email=email, username=username)
+    user = User(email=email, username=username, is_admin=False)
     user.set_password(password)
     db.session.add(user)
     db.session.commit()
